@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barang" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bfaf951e-a5b3-4052-a883-529fc592d68b">
+	<property name="ireport.zoom" value="1.6105100000000023"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from pembeli]]>
+	</queryString>
+	<field name="idpembeli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="notelp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="131" splitType="Stretch">
+			<staticText>
+				<reportElement x="-5" y="0" width="555" height="38" uuid="bc9a579c-c916-46f6-8023-0a69cf7c3d30"/>
+				<textElement textAlignment="Right">
+					<font size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peternak Kandang dan Jagal Kambing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-6" y="34" width="555" height="20" uuid="42934af4-9b56-4f86-82ff-9e9c5a137ddb"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Jalan Swadaya 1, RT012 RW010, Pejaten Timur, Pasar Minggu, 12510, Jakarta Selatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-7" y="48" width="555" height="20" uuid="aac87ae3-9c77-4bc1-a1c6-818dc89c17d4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Telp. (021) 78838368]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="95" width="555" height="1" uuid="e0b805ce-5372-47af-816d-ce071b5aaa7a"/>
+			</line>
+			<image>
+				<reportElement x="10" y="8" width="75" height="73" uuid="243b9807-a716-4055-bded-bb3d6fe1119c"/>
+				<imageExpression><![CDATA["C:\\Users\\asus\\Documents\\NetBeansProjects\\PenjualanKambing\\Laporan\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="0" y="0" width="101" height="20" uuid="d57399ca-a1c0-4580-8c2e-e7af210c94c2"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA PEMBELI]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a6329df6-6283-47cd-ae89-cf1cc1f7d369"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="4" width="100" height="16" uuid="be8ea21d-a9a7-4721-aa0d-55ee38fb5cec"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ID Pembeli]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="100" y="0" width="121" height="20" uuid="45ffbc62-bf00-4fbc-a211-e2e5c4b01666"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="90" y="5" width="131" height="15" uuid="535edc3d-ac9b-46d3-bb4b-59c0ffa92147"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nama Pembeli]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="221" y="0" width="219" height="20" uuid="eff75471-aebb-4a0b-93bd-54d620d861dc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="221" y="4" width="219" height="15" uuid="19a2fc42-d739-4e00-b786-160c610df499"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="440" y="0" width="115" height="20" uuid="dd5e336e-af06-4986-9fea-d59fb1f3232f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="440" y="5" width="115" height="14" uuid="057f3980-b84a-492e-8ae4-b129b3da2109"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nomor Telepon]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="100" height="36" uuid="78aba533-af73-405a-803d-2af9aaf0146b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="0" width="121" height="36" uuid="ba0bafe5-70b5-401c-99e2-bbc88f9d8c95"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="221" y="0" width="219" height="36" uuid="96ea789d-3204-4b4c-a30c-4ac48d06f0c2"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="6" width="100" height="30" uuid="841ca3dd-4349-4337-b7c3-af3b2f2edb30"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{idpembeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="6" width="121" height="30" uuid="501e419d-bc74-4b73-b334-b20923b64cc3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="6" width="219" height="30" uuid="60d093cd-29a6-4d8a-acca-f39c876a59ef"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="440" y="0" width="115" height="36" uuid="2da5a74b-81d5-4d99-8da1-d8878816abcf"/>
+			</rectangle>
+			<textField>
+				<reportElement x="440" y="6" width="115" height="30" uuid="2f876f81-4f70-418c-af17-420156e2df2e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{notelp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="142" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="50" width="100" height="20" uuid="094ddf56-3a72-4a1b-aa8c-a924f25682ab"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Pemilik]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-7" y="120" width="127" height="20" uuid="95ededb6-1848-47eb-afe6-81ba1509006e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[(..................................)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="120" width="127" height="20" uuid="9597c34d-669b-4db2-95aa-87bfa89bba75"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[(..................................)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="50" width="100" height="20" uuid="01227708-5c68-4458-8dbf-66cfe4557222"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Admin]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="440" y="0" width="131" height="20" forecolor="#000000" uuid="1e4f4933-9e76-4708-bf2c-6068c992f2ae"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="40" height="20" uuid="e518a445-ccf4-497f-a82d-29fac21c2cf3"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Jakarta, ]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
