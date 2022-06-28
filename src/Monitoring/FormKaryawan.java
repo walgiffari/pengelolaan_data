@@ -97,7 +97,7 @@ private void kosongkan_form(){
         a4.setText(null);
     }
 
-DefaultTableModel tabelsupplier;
+DefaultTableModel tabelkaryawan;
     
     public FormKaryawan() {
         initComponents();
@@ -105,12 +105,12 @@ DefaultTableModel tabelsupplier;
         setResizable(false);
        setKoneksi();
        nofaktur();
-         tabelsupplier = new DefaultTableModel ();
-             tabel.setModel(tabelsupplier);
-             tabelsupplier.addColumn("ID Supplier");
-             tabelsupplier.addColumn("Nama Supplier");
-             tabelsupplier.addColumn("Alamat");
-             tabelsupplier.addColumn("No Telepon");
+         tabelkaryawan = new DefaultTableModel ();
+             tabel.setModel(tabelkaryawan);
+             tabelkaryawan.addColumn("ID Karyawan");
+             tabelkaryawan.addColumn("Nama Karyawan");
+             tabelkaryawan.addColumn("Alamat");
+             tabelkaryawan.addColumn("No Telepon");
         
                tabel();
     }
@@ -137,12 +137,12 @@ DefaultTableModel tabelsupplier;
         setKoneksi();
            try {
         
-            String sql = "SELECT * FROM supplier ORDER by id_supplier desc";
+            String sql = "SELECT * FROM karyawan ORDER by id_karyawan desc";
             java.sql.Statement stat = conn.createStatement();
             ResultSet r = stat.executeQuery(sql);
 
             if (r.next()) {
-                String nofak = r.getString("id_supplier").substring(1);
+                String nofak = r.getString("id_karyawan").substring(1);
                 String AN = "" + (Integer.parseInt(nofak) + 1);
                 String Nol = "";
 
@@ -168,36 +168,36 @@ DefaultTableModel tabelsupplier;
     
     
      public void tabel(){
-      tabelsupplier.getDataVector( ).removeAllElements( );
-     tabelsupplier.fireTableDataChanged( );
-     int row = tabelsupplier.getRowCount();
+      tabelkaryawan.getDataVector( ).removeAllElements( );
+     tabelkaryawan.fireTableDataChanged( );
+     int row = tabelkaryawan.getRowCount();
      for (int i=0;i<row;i++){
-        tabelsupplier.removeRow(0);
+        tabelkaryawan.removeRow(0);
      }
      try{
            //membuat statemen pemanggilan data pada table tblGaji dari database
     
-           String sql        = "Select * from supplier";
+           String sql        = "Select * from karyawan";
            ResultSet res   = stm.executeQuery(sql);
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
                 Object[ ] obj = new Object[5];
-                obj[0] = res.getString("id_supplier");
-                obj[1] = res.getString("nama_supplier");
-                obj[2] = res.getString("alamat_supplier");
+                obj[0] = res.getString("id_karyawan");
+                obj[1] = res.getString("nama_karyawanr");
+                obj[2] = res.getString("alamat_karyawan");
                 obj[3] = res.getString("no_telepon");
  
                
-               tabelsupplier.addRow(obj);
+               tabelkaryawan.addRow(obj);
                 
             }
           
       }catch(SQLException err){
             JOptionPane.showMessageDialog(null, err.getMessage() );
       }
-     int b = tabelsupplier.getRowCount();
-     jmlsupplier.setText("Jumlah Supplier : "+b);
+     int b = tabelkaryawan.getRowCount();
+     jmlsupplier.setText("Jumlah Karyawan : "+b);
     }
   
  
@@ -263,7 +263,7 @@ DefaultTableModel tabelsupplier;
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("TAMBAH PRODUK");
+        jLabel2.setText("TAMBAH KARYAWAN");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -546,26 +546,26 @@ enable_tabel();
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         try{
 
-      String sql1 = "insert into supplier (id_supplier,nama_supplier,alamat_supplier,no_telepon) values ('"+a1.getText()+"','"+a2.getText()+"', '"+a3.getText()+"', '"+a4.getText()+"')";
+      String sql1 = "insert into karyawan (id_karyawan,nama_karyawan,alamat_karyawan,no_telepon) values ('"+a1.getText()+"','"+a2.getText()+"', '"+a3.getText()+"', '"+a4.getText()+"')";
             PreparedStatement stat = conn.prepareStatement(sql1);
       stat.executeUpdate(sql1);
-          JOptionPane.showMessageDialog(null,"Data Supplier Telah Disimpan");
+          JOptionPane.showMessageDialog(null,"Data Karyawan Telah Disimpan");
             a3.requestFocus();
             kosongkan_form();
             tabel();
             nofaktur();
         }catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Data Supplier Gagal Disimpan"+e);
+            JOptionPane.showMessageDialog(null,"Data Karyawan Gagal Disimpan"+e);
         }
     }//GEN-LAST:event_simpanActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         try{
-            String sql = "DELETE FROM supplier WHERE id_supplier='"+a1.getText()+"'";
+            String sql = "DELETE FROM karyawan WHERE id_karyawan='"+a1.getText()+"'";
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
             kosongkan_form1();
-            JOptionPane.showMessageDialog(null, "Hapus Data Produk Berhasil");
+            JOptionPane.showMessageDialog(null, "Hapus Data Karyawan Berhasil");
             tabel();
         }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -577,15 +577,15 @@ enable_tabel();
        try{
            
          
-             String sql = "UPDATE supplier SET nama_supplier='"+a2.getText()+"', alamat_supplier='"+a3.getText()+"', no_telepon='"+a4.getText()+"' where id_produk='"+a1.getText()+"'";
+             String sql = "UPDATE karyawan SET nama_karyawan='"+a2.getText()+"', alamat_karyawan='"+a3.getText()+"', no_telepon='"+a4.getText()+"' where id_produk='"+a1.getText()+"'";
           
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Data Supplier Berhasil Diubah");
+            JOptionPane.showMessageDialog(null,"Data Karyawan Berhasil Diubah");
             a2.requestFocus();
             tabel();
         }catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Data Supplier Gagal Diubah"+e);
+            JOptionPane.showMessageDialog(null,"Data Karyawan Gagal Diubah"+e);
         }
        
     }//GEN-LAST:event_editActionPerformed
@@ -633,36 +633,36 @@ tabel();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  
-      tabelsupplier = new DefaultTableModel ();
-             tabel.setModel(tabelsupplier);
-             tabelsupplier.addColumn("ID Supplier");
-             tabelsupplier.addColumn("Nama Supplier");
-             tabelsupplier.addColumn("Alamat Supplier");
-             tabelsupplier.addColumn("No Telepon");
+      tabelkaryawan = new DefaultTableModel ();
+             tabel.setModel(tabelkaryawan);
+             tabelkaryawan.addColumn("ID Karyawan");
+             tabelkaryawan.addColumn("Nama Karyawan");
+             tabelkaryawan.addColumn("Alamat Karyawan");
+             tabelkaryawan.addColumn("No Telepon");
      setKoneksi();
-      tabelsupplier.getDataVector( ).removeAllElements( );
-     tabelsupplier.fireTableDataChanged( );
-      int row = tabelsupplier.getRowCount();
+      tabelkaryawan.getDataVector( ).removeAllElements( );
+     tabelkaryawan.fireTableDataChanged( );
+      int row = tabelkaryawan.getRowCount();
      for (int i=0;i<row;i++){
-         tabelsupplier.removeRow(0);
+         tabelkaryawan.removeRow(0);
     
      }
      try{
-          String Response = JOptionPane.showInputDialog (null, "Masukkan ID Supplier atau Nama Supplier ", "Pencarian Supplier",JOptionPane.QUESTION_MESSAGE);
+          String Response = JOptionPane.showInputDialog (null, "Masukkan ID Karyawan atau Nama Karyawan ", "Pencarian Karyawan",JOptionPane.QUESTION_MESSAGE);
         
-           String sql        = "select * from supplier where id_supplier like '"+Response+"' or nama_supplier like '" +Response+"' or no_telepon like '" +Response+"'";
+           String sql        = "select * from karyawan where id_karyawan like '"+Response+"' or nama_karyawan like '" +Response+"' or no_telepon like '" +Response+"'";
            PreparedStatement stat = conn.prepareStatement(sql);
            ResultSet res   = stat.executeQuery(sql);
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
                 Object[ ] obj = new Object[4];
-                obj[0] = res.getString("id_supplier");
-                obj[1] = res.getString("nama_supplier");
-                obj[2] = res.getString("alamat_supplier");
+                obj[0] = res.getString("id_karyawan");
+                obj[1] = res.getString("nama_karyawan");
+                obj[2] = res.getString("alamat_karyawan");
                 obj[3] = res.getString("no_telepon");
                
-                  tabelsupplier.addRow(obj);
+                  tabelkaryawan.addRow(obj);
             }
         
       }catch(SQLException err){
