@@ -116,6 +116,7 @@ DefaultTableModel tabelproduk;
              tabelproduk.addColumn("Nama Produk");
              tabelproduk.addColumn("Stok Produk");
              tabelproduk.addColumn("Umur Produk");
+             tabelproduk.addColumn("Retur Produk");
         
                tabel();
     }
@@ -197,19 +198,18 @@ DefaultTableModel tabelproduk;
      try{
            //membuat statemen pemanggilan data pada table tblGaji dari database
     
-           String sql        = "Select produk.id_produk, rak.nama_rak, produk.nama_produk, produk.stok_produk, produk.umur_produk from produk INNER JOIN rak on produk.id_rak = rak.id_rak";
+           String sql        = "Select produk.id_produk, rak.nama_rak, produk.nama_produk, produk.stok_produk, produk.umur_produk, produk.retur_produk from produk INNER JOIN rak on produk.id_rak = rak.id_rak";
            ResultSet res   = stm.executeQuery(sql);
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
-                Object[ ] obj = new Object[5];
+                Object[ ] obj = new Object[6];
                 obj[0] = res.getString("produk.id_produk");
                 obj[1] = res.getString("rak.nama_rak");
                 obj[2] = res.getString("produk.nama_produk");
                 obj[3] = res.getString("produk.stok_produk");
                 obj[4] = res.getString("produk.umur_produk");
- 
-               
+                obj[5] = res.getString("produk.retur_produk");              
                tabelproduk.addRow(obj);
                 
             }
@@ -589,11 +589,20 @@ enable_tabel();
         String idproduk = tabel.getValueAt(baris,0).toString();
         a1.setText(idproduk);
         
-        String namaproduk = tabel.getValueAt(baris,1).toString();
-        a2.setText(namaproduk);
+        String idrak = tabel.getValueAt(baris,1).toString();
+        rak.setSelectedItem(idrak);
                 
-        String umurproduk = tabel.getValueAt(baris,3).toString();
+        String namaproduk = tabel.getValueAt(baris,2).toString();
+        a2.setText(namaproduk);
+        
+        String stokproduk = tabel.getValueAt(baris,3).toString();
+        stok.setText(stokproduk);
+        
+        String umurproduk = tabel.getValueAt(baris,4).toString();
         a3.setText(umurproduk);
+       
+        String returproduk = tabel.getValueAt(baris,5).toString();
+        a4.setText(returproduk);
         
   
       a1.setEnabled(false);
