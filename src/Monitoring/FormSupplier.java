@@ -263,7 +263,7 @@ DefaultTableModel tabelsupplier;
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("TAMBAH PRODUK");
+        jLabel2.setText("TAMBAH SUPPLIER");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -530,14 +530,17 @@ DefaultTableModel tabelsupplier;
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
 enable_tabel();        
         int baris = tabel.rowAtPoint(evt.getPoint());
-        String idproduk = tabel.getValueAt(baris,0).toString();
-        a1.setText(idproduk);
+        String idsupplier = tabel.getValueAt(baris,0).toString();
+        a1.setText(idsupplier);
         
-        String namaproduk = tabel.getValueAt(baris,1).toString();
-        a2.setText(namaproduk);
+        String namasupplier = tabel.getValueAt(baris,1).toString();
+        a2.setText(namasupplier);
                 
-        String umurproduk = tabel.getValueAt(baris,3).toString();
-        a3.setText(umurproduk);
+        String alamatsupplier = tabel.getValueAt(baris,2).toString();
+        a3.setText(alamatsupplier);
+        
+        String telpsupplier = tabel.getValueAt(baris,3).toString();
+        a4.setText(telpsupplier);
         
   
       a1.setEnabled(false);
@@ -567,6 +570,7 @@ enable_tabel();
             kosongkan_form1();
             JOptionPane.showMessageDialog(null, "Hapus Data Produk Berhasil");
             tabel();
+            nofaktur();
         }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -577,7 +581,7 @@ enable_tabel();
        try{
            
          
-             String sql = "UPDATE supplier SET nama_supplier='"+a2.getText()+"', alamat_supplier='"+a3.getText()+"', no_telepon='"+a4.getText()+"' where id_produk='"+a1.getText()+"'";
+             String sql = "UPDATE supplier SET nama_supplier='"+a2.getText()+"', alamat_supplier='"+a3.getText()+"', no_telepon='"+a4.getText()+"' where id_supplier='"+a1.getText()+"'";
           
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.executeUpdate();

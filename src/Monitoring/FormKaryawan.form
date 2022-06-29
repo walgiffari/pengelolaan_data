@@ -197,23 +197,23 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" pref="102" max="32767" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="a2" min="-2" pref="82" max="-2" attributes="0"/>
-                                      <EmptySpace min="32" pref="117" max="32767" attributes="0"/>
+                                      <EmptySpace min="32" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="47" max="32767" attributes="0"/>
-                                  <Component id="a1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="a1" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -229,7 +229,7 @@
                                           <Component id="a4" min="-2" pref="82" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                   <Component id="reset" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -283,7 +283,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="TAMBAH SUPPLIER"/>
+                <Property name="text" type="java.lang.String" value="TAMBAH KARYAWAN"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -338,7 +338,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nama Supplier"/>
+                <Property name="text" type="java.lang.String" value="Nama Karyawan"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -349,7 +349,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ID Supplier"/>
+                <Property name="text" type="java.lang.String" value="ID Karyawan"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="a1">
@@ -451,7 +451,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="FORM SUPPLIER"/>
+            <Property name="text" type="java.lang.String" value="FORM KARYAWAN"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">

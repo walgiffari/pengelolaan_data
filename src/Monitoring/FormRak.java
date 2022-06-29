@@ -488,14 +488,14 @@ DefaultTableModel tabelrak;
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
 enable_tabel();        
         int baris = tabel.rowAtPoint(evt.getPoint());
-        String idproduk = tabel.getValueAt(baris,0).toString();
-        a1.setText(idproduk);
+        String idrak = tabel.getValueAt(baris,0).toString();
+        a1.setText(idrak);
         
-        String namaproduk = tabel.getValueAt(baris,1).toString();
-        a2.setText(namaproduk);
+        String namarak = tabel.getValueAt(baris,1).toString();
+        a2.setText(namarak);
                 
-        String umurproduk = tabel.getValueAt(baris,2).toString();
-        a3.setText(umurproduk);
+        String keteranganrak = tabel.getValueAt(baris,2).toString();
+        a3.setText(keteranganrak);
         
   
       a1.setEnabled(false);

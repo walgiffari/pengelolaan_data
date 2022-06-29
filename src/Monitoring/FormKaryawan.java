@@ -182,9 +182,9 @@ DefaultTableModel tabelkaryawan;
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
-                Object[ ] obj = new Object[5];
+                Object[ ] obj = new Object[4];
                 obj[0] = res.getString("id_karyawan");
-                obj[1] = res.getString("nama_karyawanr");
+                obj[1] = res.getString("nama_karyawan");
                 obj[2] = res.getString("alamat_karyawan");
                 obj[3] = res.getString("no_telepon");
  
@@ -263,7 +263,7 @@ DefaultTableModel tabelkaryawan;
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("TAMBAH SUPPLIER");
+        jLabel2.setText("TAMBAH KARYAWAN");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,11 +295,11 @@ DefaultTableModel tabelkaryawan;
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nama Supplier");
+        jLabel5.setText("Nama Karyawan");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 13)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("ID Supplier");
+        jLabel6.setText("ID Karyawan");
 
         a1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,19 +342,19 @@ DefaultTableModel tabelkaryawan;
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 117, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                            .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(134, 134, 134))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -366,7 +366,7 @@ DefaultTableModel tabelkaryawan;
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(a4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addGap(24, 24, 24)
                             .addComponent(reset))))
                 .addGap(0, 0, 0))
         );
@@ -435,7 +435,7 @@ DefaultTableModel tabelkaryawan;
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("FORM SUPPLIER");
+        jLabel1.setText("FORM KARYAWAN");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/refresh kecil.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -530,14 +530,17 @@ DefaultTableModel tabelkaryawan;
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
 enable_tabel();        
         int baris = tabel.rowAtPoint(evt.getPoint());
-        String idproduk = tabel.getValueAt(baris,0).toString();
-        a1.setText(idproduk);
+        String idkaryawan = tabel.getValueAt(baris,0).toString();
+        a1.setText(idkaryawan);
         
-        String namaproduk = tabel.getValueAt(baris,1).toString();
-        a2.setText(namaproduk);
+        String namakaryawan = tabel.getValueAt(baris,1).toString();
+        a2.setText(namakaryawan);
                 
-        String umurproduk = tabel.getValueAt(baris,3).toString();
-        a3.setText(umurproduk);
+        String alamatkaryawan = tabel.getValueAt(baris,2).toString();
+        a3.setText(alamatkaryawan);
+        
+        String telpkaryawan = tabel.getValueAt(baris,3).toString();
+        a4.setText(telpkaryawan);
         
   
       a1.setEnabled(false);
@@ -567,6 +570,7 @@ enable_tabel();
             kosongkan_form1();
             JOptionPane.showMessageDialog(null, "Hapus Data Karyawan Berhasil");
             tabel();
+            nofaktur();
         }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -577,7 +581,7 @@ enable_tabel();
        try{
            
          
-             String sql = "UPDATE karyawan SET nama_karyawan='"+a2.getText()+"', alamat_karyawan='"+a3.getText()+"', no_telepon='"+a4.getText()+"' where id_produk='"+a1.getText()+"'";
+             String sql = "UPDATE karyawan SET nama_karyawan='"+a2.getText()+"', alamat_karyawan='"+a3.getText()+"', no_telepon='"+a4.getText()+"' where id_karyawan='"+a1.getText()+"'";
           
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.executeUpdate();
