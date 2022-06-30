@@ -268,7 +268,7 @@ Locale.setDefault(locale);
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 570));
 
-        jMenu3.setText("File");
+        jMenu3.setText("Master");
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem7.setText("Data Admin");
