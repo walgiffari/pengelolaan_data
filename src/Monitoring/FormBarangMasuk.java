@@ -81,7 +81,6 @@ DefaultTableModel tabelproduk;
        disable();
        setResizable(false);
        setKoneksi();
-       nofaktur();
        stok.setEnabled(false);
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -93,15 +92,13 @@ DefaultTableModel tabelproduk;
          tabelproduk = new DefaultTableModel ();
              tabel.setModel(tabelproduk);
              tabelproduk.addColumn("ID Produk");
-             tabelproduk.addColumn("ID Rak");
              tabelproduk.addColumn("Nama Produk");
-             tabelproduk.addColumn("Stok Produk");
-             tabelproduk.addColumn("Umur Produk");
 //             
 //             tanggal.setDateFormatString("dd/MM/yyyy");
                tabel();
                idbarangmasuk();
                idbarangmasuk.setEnabled(false);
+               tanggal.setVisible(false);
     }
     
     
@@ -119,41 +116,7 @@ DefaultTableModel tabelproduk;
           
           
       }
-    }
-
-    
-       public void nofaktur() {
-        setKoneksi();
-           try {
-        
-            String sql = "SELECT * FROM produk ORDER by id_produk desc";
-            java.sql.Statement stat = conn.createStatement();
-            ResultSet r = stat.executeQuery(sql);
-
-            if (r.next()) {
-                String nofak = r.getString("id_produk").substring(1);
-                String AN = "" + (Integer.parseInt(nofak) + 1);
-                String Nol = "";
-
-                if (AN.length() == 1) {
-                    Nol = "000";
-                } else if (AN.length() == 2) {
-                    Nol = "00";
-                } else if (AN.length() == 3) {
-                    Nol = "0";
-                } else if (AN.length() == 4) {
-                    Nol = "";
-                }
-
-              a1.setText("3" + Nol + AN);
-            } else {
-                a1.setText("34211");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }  
+    } 
        
         public void idbarangmasuk() {
         setKoneksi();
@@ -199,18 +162,15 @@ DefaultTableModel tabelproduk;
      try{
            //membuat statemen pemanggilan data pada table tblGaji dari database
     
-           String sql        = "select * from produk";
+           String sql        = "select barangmasuk.id_barangmasuk, produk.nama_produk, barangmasuk.id_produk, produk.nama_produk, barangmasuk.stok_masuk from barangmasuk INNER JOIN produk on barangmasuk.id_produk = produk.id_produk";
            ResultSet res   = stm.executeQuery(sql);
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
-                Object[ ] obj = new Object[5];
-                
-                obj[0] = res.getString("id_produk");
-                obj[1] = res.getString("id_rak");
-                obj[2] = res.getString("nama_produk");
-                obj[3] = res.getString("stok_produk");
-                obj[4] = res.getString("umur_produk");
+                Object[ ] obj = new Object[2];
+               
+                obj[0] = res.getString("barangmasuk.id_produk");
+                obj[1] = res.getString("produk.nama_produk");
  
                
                tabelproduk.addRow(obj);
@@ -230,7 +190,6 @@ DefaultTableModel tabelproduk;
              tabel.setModel(tabelproduk);
              tabelproduk.addColumn("ID Produk");
              tabelproduk.addColumn("Nama Produk");
-             tabelproduk.addColumn("Umur Produk");
      setKoneksi();
       tabelproduk.getDataVector( ).removeAllElements( );
      tabelproduk.fireTableDataChanged( );
@@ -248,10 +207,9 @@ DefaultTableModel tabelproduk;
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
-                Object[ ] obj = new Object[4];
+                Object[ ] obj = new Object[2];
                 obj[0] = res.getString("id_produk");
                 obj[1] = res.getString("nama_produk");
-                obj[2] = res.getString("umur_produk");
                
                   tabelproduk.addRow(obj);
             }
@@ -380,10 +338,6 @@ DefaultTableModel tabelproduk;
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,10 +345,7 @@ DefaultTableModel tabelproduk;
                                     .addComponent(jLabel13)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(idbarangmasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(55, 55, 55)
-                                    .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel6))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +354,13 @@ DefaultTableModel tabelproduk;
                                 .addGap(32, 32, 32)
                                 .addComponent(edit)
                                 .addGap(41, 41, 41)
-                                .addComponent(reset)))))
+                                .addComponent(reset))))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(a1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -426,7 +383,7 @@ DefaultTableModel tabelproduk;
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(stok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edit)
                     .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -546,13 +503,7 @@ enable_tabel();
         
         
         String idproduk = tabel.getValueAt(baris,0).toString();
-        a1.setText(idproduk);
-        
-        
-        String stokproduk = tabel.getValueAt(baris,3).toString();
-        stok.setText(stokproduk);
-      
-        
+        a1.setText(idproduk);      
      
         stok.setEnabled(true);
   
@@ -568,7 +519,6 @@ enable_tabel();
             JOptionPane.showMessageDialog(null,"Berhasil menambahkan stok!");
             tabel();
             idbarangmasuk();
-            nofaktur();
         }catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Data Produk Gagal Diubah"+e);
         }
@@ -576,11 +526,10 @@ enable_tabel();
     }//GEN-LAST:event_editActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-        nofaktur();
+   
     }//GEN-LAST:event_resetActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-nofaktur();
 tabel();
 
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -618,7 +567,7 @@ getSearch();        // TODO add your handling code here:
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        //<editor-fold defaultstate="co llapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
