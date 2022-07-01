@@ -122,12 +122,12 @@ DefaultTableModel tabelproduk;
         setKoneksi();
            try {
         
-            String sql = "SELECT * FROM barangmasuk ORDER by id_barangmasuk desc";
+            String sql = "SELECT * FROM barangkeluar ORDER by id_barangkeluar desc";
             java.sql.Statement stat = conn.createStatement();
             ResultSet r = stat.executeQuery(sql);
 
             if (r.next()) {
-                String nofak = r.getString("id_barangmasuk").substring(1);
+                String nofak = r.getString("id_barangkeluar").substring(1);
                 String AN = "" + (Integer.parseInt(nofak) + 1);
                 String Nol = "";
 
@@ -141,9 +141,9 @@ DefaultTableModel tabelproduk;
                     Nol = "";
                 }
 
-              idbarangmasuk.setText("B" + Nol + AN);
+              idbarangmasuk.setText("Z" + Nol + AN);
             } else {
-                idbarangmasuk.setText("B0001");
+                idbarangmasuk.setText("Z0001");
             }
 
         } catch (Exception e) {
@@ -162,15 +162,15 @@ DefaultTableModel tabelproduk;
      try{
            //membuat statemen pemanggilan data pada table tblGaji dari database
     
-           String sql        = "select barangmasuk.id_barangmasuk, produk.nama_produk, barangmasuk.id_produk, produk.nama_produk, barangmasuk.stok_masuk from barangmasuk INNER JOIN produk on barangmasuk.id_produk = produk.id_produk";
+           String sql        = "select * from produk";
            ResultSet res   = stm.executeQuery(sql);
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
                 Object[ ] obj = new Object[2];
                
-                obj[0] = res.getString("barangmasuk.id_produk");
-                obj[1] = res.getString("produk.nama_produk");
+                obj[0] = res.getString("id_produk");
+                obj[1] = res.getString("nama_produk");
  
                
                tabelproduk.addRow(obj);
@@ -512,14 +512,14 @@ enable_tabel();
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
        try{
            
-             String sql2 = "insert into barangmasuk (id_barangmasuk, tanggal_masuk, id_produk, stok_masuk) values ('"+idbarangmasuk.getText()+"','"+tanggal.getText()+"', '"+a1.getText()+"', '"+stok.getText()+"')";
+             String sql2 = "insert into barangkeluar (id_barangkeluar, tanggal_keluar, id_produk, stok_keluar) values ('"+idbarangmasuk.getText()+"','"+tanggal.getText()+"', '"+a1.getText()+"', '"+stok.getText()+"')";
             PreparedStatement stat2 = conn.prepareStatement(sql2);
               stat2.executeUpdate(sql2);
-            JOptionPane.showMessageDialog(null,"Berhasil menambahkan stok!");
+            JOptionPane.showMessageDialog(null,"Berhasil menjual stok!");
             tabel();
             idbarangmasuk();
         }catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"Data Produk Gagal Diubah"+e);
+            JOptionPane.showMessageDialog(null,"Gagal Menjual!"+e);
         }
        
     }//GEN-LAST:event_editActionPerformed

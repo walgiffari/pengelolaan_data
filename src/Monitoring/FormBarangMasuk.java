@@ -162,15 +162,15 @@ DefaultTableModel tabelproduk;
      try{
            //membuat statemen pemanggilan data pada table tblGaji dari database
     
-           String sql        = "select barangmasuk.id_barangmasuk, produk.nama_produk, barangmasuk.id_produk, produk.nama_produk, barangmasuk.stok_masuk from barangmasuk INNER JOIN produk on barangmasuk.id_produk = produk.id_produk";
+           String sql        = "select * from produk";
            ResultSet res   = stm.executeQuery(sql);
 
            //penelusuran baris pada tabel tblGaji dari database
            while(res.next ()){
                 Object[ ] obj = new Object[2];
                
-                obj[0] = res.getString("barangmasuk.id_produk");
-                obj[1] = res.getString("produk.nama_produk");
+                obj[0] = res.getString("id_produk");
+                obj[1] = res.getString("nama_produk");
  
                
                tabelproduk.addRow(obj);
